@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1 class="text-center">List of Books</h1>
+    </div>
+
+    <div class="bookList">
+        {% for books in bookList  %}
+           <table>
+               <tr>
+                    <td>{{ books.id }}</td>
+                    <td>{{ books.title }}</td>
+                    <td>{{ books.owner }}</td>
+                </tr>
+           </table>
+        {% endfor %}
+    </div>
+{% endblock %}
