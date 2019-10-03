@@ -22,14 +22,37 @@ class Book
     private $Title;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private $Author;
+    private $PurchasedDate;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Author", inversedBy="books", cascade={"persist"})
+     */
+    private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Owner", inversedBy="books", cascade={"persist"})
      */
     private $Owner;
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     * @return Book
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -48,24 +71,24 @@ class Book
         return $this;
     }
 
-    public function getAuthor(): ?string
+    public function getPurchasedDate(): ?\DateTimeInterface
     {
-        return $this->Author;
+        return $this->PurchasedDate;
     }
 
-    public function setAuthor(?string $Author): self
+    public function setPurchasedDate(?\DateTimeInterface $PurchasedDate): self
     {
-        $this->Author = $Author;
+        $this->PurchasedDate = $PurchasedDate;
 
         return $this;
     }
 
-    public function getOwner(): ?string
+    public function getOwner(): ?Owner
     {
         return $this->Owner;
     }
 
-    public function setOwner(?string $Owner): self
+    public function setOwner(?Owner $Owner): self
     {
         $this->Owner = $Owner;
 

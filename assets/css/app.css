@@ -1,0 +1,14 @@
+/*Général*/
+body {
+    background-color: lightgray;
+}
+
+.purple {
+    color: purple;
+}
+
+/*home style*/
+.icon-size-home {
+    font-size: 5.9vw;
+}
+
