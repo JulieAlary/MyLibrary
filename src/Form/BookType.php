@@ -4,10 +4,13 @@ namespace App\Form;
 
 use App\Entity\Author;
 use App\Entity\Book;
+use App\Entity\CollectionName;
 use App\Entity\Owner;
+use App\Entity\PublishingHouse;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,17 +22,29 @@ class BookType extends AbstractType
     {
         $builder
             ->add('Title', TextType::class)
-            ->add('Author',EntityType::class, [
+            ->add('Author', EntityType::class, [
                 'class' => Author::class,
                 'choice_label' => 'Lastname',
-                'multiple' => true
+                'multiple' => false
             ])
             ->add('Owner', EntityType::class, [
                 'class' => Owner::class,
                 'choice_label' => 'Firstname',
-                'multiple' => true
+                'multiple' => false
             ])
             ->add('PurchasedDate', DateType::class)
+            ->add('CollectionName', EntityType::class, [
+                'class' => CollectionName::class,
+                'choice_label' => 'Name',
+                'multiple' => false
+            ])
+            ->add('PublishingHouse', EntityType::class, [
+                'class' => PublishingHouse::class,
+                'choice_label' => 'Name',
+                'multiple' => false
+            ])
+            ->add('NumberOfPages', NumberType::class)
+            ->add('Shelf', NumberType::class)
             ->add('Save', SubmitType::class)
         ;
     }

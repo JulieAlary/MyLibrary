@@ -37,6 +37,26 @@ class Book
     private $Owner;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CollectionName", inversedBy="books", cascade={"persist"})
+     */
+    private $CollectionName;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\PublishingHouse", inversedBy="books", cascade={"persist"})
+     */
+    private $PublishingHouse;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $NumberOfPages;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $Shelf;
+
+    /**
      * @return mixed
      */
     public function getAuthor()
@@ -91,6 +111,54 @@ class Book
     public function setOwner(?Owner $Owner): self
     {
         $this->Owner = $Owner;
+
+        return $this;
+    }
+
+    public function getCollectionName(): ?CollectionName
+    {
+        return $this->CollectionName;
+    }
+
+    public function setCollectionName(?CollectionName $CollectionName): self
+    {
+        $this->CollectionName = $CollectionName;
+
+        return $this;
+    }
+
+    public function getPublishingHouse(): ?PublishingHouse
+    {
+        return $this->PublishingHouse;
+    }
+
+    public function setPublishingHouse(?PublishingHouse $PublishingHouse): self
+    {
+        $this->PublishingHouse = $PublishingHouse;
+
+        return $this;
+    }
+
+    public function getNumberOfPages(): ?int
+    {
+        return $this->NumberOfPages;
+    }
+
+    public function setNumberOfPages(?int $NumberOfPages): self
+    {
+        $this->NumberOfPages = $NumberOfPages;
+
+        return $this;
+    }
+
+    public function getShelf(): ?int
+    {
+        return $this->Shelf;
+    }
+
+    public function setShelf(?int $Shelf): self
+    {
+        $this->Shelf = $Shelf;
 
         return $this;
     }
