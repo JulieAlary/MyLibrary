@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Author;
 use App\Entity\Book;
+use App\Entity\CollectionName;
 use App\Entity\Owner;
 use     Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -19,6 +20,10 @@ class AppFixtures extends Fixture
         $owner1 = new Owner();
         $owner1->setFirstname('Julie');
         $owner1->setLastname('Alary');
+
+        $collection = new CollectionName();
+        $collection->setName('Le livre de poche');
+        $manager->persist($collection);
 
         $book1 = new Book();
         $book1->setTitle('Demain les chats');

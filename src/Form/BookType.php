@@ -6,7 +6,6 @@ use App\Entity\Author;
 use App\Entity\Book;
 use App\Entity\CollectionName;
 use App\Entity\Owner;
-use App\Entity\PublishingHouse;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -35,11 +34,6 @@ class BookType extends AbstractType
             ->add('PurchasedDate', DateType::class)
             ->add('CollectionName', EntityType::class, [
                 'class' => CollectionName::class,
-                'choice_label' => 'Name',
-                'multiple' => false
-            ])
-            ->add('PublishingHouse', EntityType::class, [
-                'class' => PublishingHouse::class,
                 'choice_label' => 'Name',
                 'multiple' => false
             ])
